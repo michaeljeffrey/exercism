@@ -1,21 +1,11 @@
 def slices(series, length):
-    #       self.assertEqual(slices("9142", 2), ["91", "14", "42"])
-    #   slice(start, stop, step)
-
-    print(series, length)
-
-    n = 0
-    strings = []
-
-    for n in range(0, len(series)):
-        print("loop", n)
-        string = ""
-        sObject = slice(n, n + length)
-        print(sObject)
-        print()
-        if len(series[sObject]) == length:
-            strings.append(series[sObject])
-        
-    return strings
-
-# print(slices("9142", 2))
+    series_length = len(series)
+    if not (0 < length <= series_length):
+        raise ValueError("Invalid")
+    slices = []
+    start = 0
+    while length <= series_length:
+        slices.append(series[start:length])
+        start += 1
+        length += 1
+    return slices
