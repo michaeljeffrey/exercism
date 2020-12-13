@@ -1,11 +1,5 @@
 def slices(series, length):
-    series_length = len(series)
-    if not (0 < length <= series_length):
+    if not (0 < length <= len(series)):
         raise ValueError("Invalid")
-    slices = []
-    start = 0
-    while length <= series_length:
-        slices.append(series[start:length])
-        start += 1
-        length += 1
-    return slices
+    return([series[i:length+i] for i in range(len(series)) if i <= len(series)-length])
+
